@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_quit.c                                          :+:      :+:    :+:   */
+/*   gnl.h 					                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: evilsbol <evilsbol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/02/07 17:17:43 by evilsbol          #+#    #+#             */
-/*   Updated: 2014/02/07 17:23:01 by evilsbol         ###   ########.fr       */
+/*   Created: 2013/12/03 14:31:45 by evilsbol          #+#    #+#             */
+/*   Updated: 2013/12/18 22:02:04 by evilsbol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libprt.h"
+#ifndef GNL_H
+# define GNL_H
 
-void	ft_quit(int system, char *e_perso)
-{
-	if (system)
-		ft_printf_fd(2, RED "%s: %s\n" RESET, strerror(system), e_perso);
-	else
-		ft_printf_fd(2, RED "%s\n" RESET, e_perso);
-	exit(EXIT_FAILURE);
-}
+# include <sys/types.h>
+# include <sys/uio.h>
+# include "libft.h"
+
+# define BUFF_SIZE 8
+
+char	*join(char *s1, char *s2);
+int		cut_at_line(char **save_buff, char **line);
+int		get_next_line(int const fd, char **line);
+
+#endif /* !GNL_H */

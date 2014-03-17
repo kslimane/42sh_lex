@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_quit.c                                          :+:      :+:    :+:   */
+/*   ft_arraycpy.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: evilsbol <evilsbol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/02/07 17:17:43 by evilsbol          #+#    #+#             */
-/*   Updated: 2014/02/07 17:23:01 by evilsbol         ###   ########.fr       */
+/*   Created: 2014/02/25 14:47:41 by evilsbol          #+#    #+#             */
+/*   Updated: 2014/02/25 14:50:33 by evilsbol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libprt.h"
+#include "libft.h"
 
-void	ft_quit(int system, char *e_perso)
+int		ft_arraycpy(char **dest, char **src)
 {
-	if (system)
-		ft_printf_fd(2, RED "%s: %s\n" RESET, strerror(system), e_perso);
-	else
-		ft_printf_fd(2, RED "%s\n" RESET, e_perso);
-	exit(EXIT_FAILURE);
+	int		i;
+
+	i = 0;
+	while (src[i])
+	{
+		if (!(dest[i] = ft_strdup(src[i])))
+			return (0);
+		i++;
+	}
+	dest[i] = NULL;
+	return (1);
 }

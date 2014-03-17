@@ -31,7 +31,9 @@ SRC2 =	ft_memalloc.c ft_memdel.c ft_strnew.c ft_strdel.c ft_strclr.c \
 		ft_striter.c ft_striteri.c ft_strmap.c ft_strmapi.c ft_strequ.c \
 		ft_strnequ.c ft_strsub.c ft_strjoin.c ft_strtrim.c ft_strsplit.c		
 # Libft Perso
-EXTRA =	ft_strjoin3.c ft_count.c ft_isnum.c ft_singleton.c ft_pow.c
+EXTRA =	ft_strjoin3.c ft_count.c ft_swap.c ft_isnum.c ft_singleton.c ft_pow.c \
+		ft_arraylen.c ft_arraycpy.c ft_arraydel.c ft_arrayprt.c \
+		ft_arraysrt.c ft_arraydup.c ft_charcpy.c
 
 # STANDARD VARIABLES
 CC = gcc -Wall -Wextra -Werror -g #-pedantic

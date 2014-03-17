@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_quit.c                                          :+:      :+:    :+:   */
+/*   ft_putendl.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: evilsbol <evilsbol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/02/07 17:17:43 by evilsbol          #+#    #+#             */
-/*   Updated: 2014/02/07 17:23:01 by evilsbol         ###   ########.fr       */
+/*   Created: 2014/02/26 15:07:45 by evilsbol          #+#    #+#             */
+/*   Updated: 2014/02/26 15:08:55 by evilsbol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libprt.h"
 
-void	ft_quit(int system, char *e_perso)
+void	ft_putendl(const char *str)
 {
-	if (system)
-		ft_printf_fd(2, RED "%s: %s\n" RESET, strerror(system), e_perso);
-	else
-		ft_printf_fd(2, RED "%s\n" RESET, e_perso);
-	exit(EXIT_FAILURE);
+	if (str)
+		ft_putstr(str);
+	write(1, "\n", 1);
 }

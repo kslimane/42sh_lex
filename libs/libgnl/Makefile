@@ -5,32 +5,24 @@
 #                                                     +:+ +:+         +:+      #
 #    By: evilsbol <evilsbol@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2013/12/16 19:38:04 by evilsbol          #+#    #+#              #
-#    Updated: 2014/02/07 17:20:14 by evilsbol         ###   ########.fr        #
+#    Created: 2013/11/19 14:52:24 by evilsbol          #+#    #+#              #
+#    Updated: 2013/12/10 15:12:45 by evilsbol         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
-# PROJECT VARIABLES
-NAME = mshell
-LIBA = libmshell.a
-TEST = test
-RUN_ARGS = 
+NAME = $(LIBA)
+LIBA = 	libgnl.a
 
-LPATH = -L./ -lmshell\
-		-L./libs/libft -lft\
-		-L./libs/libprt -lprt\
-		-L./libs/libgnl -lgnl
-		
+LIBS =	-L./ -lgnl
 
-HPATH = -Iincludes\
-		-I./libs/libft/includes\
-		-I./libs/libprt/includes\
-		-I./libs/libgnl/includes
+HPATH = -I./includes \
+		-I../libft/includes \
+		-I../libprt/includes
 
-SRCS =  main.c mh_exec.c
+SRCS = gnl.c
 
 # STANDARD VARIABLES
-CC = cc -Wall -Wextra -Werror -g #-pedantic
+CC = gcc -Wall -Wextra -Werror -g #-pedantic
 AR = ar -cvq
 RM = rm -rf
 SRCDIR = srcs
@@ -52,25 +44,12 @@ BOLDBLACK=	\033[1m\033[30m
 BOLDRED=	\033[1m\033[31m
 BOLDWHITE=	\033[1m\033[37m
 
-# MAKEHELP
-LOADING = ./makehelp/loading
-
-ifeq (run,$(firstword $(MAKECMDGOALS)))
-  RUN_ARGS := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))
-  $(eval $(RUN_ARGS):;@:)
-endif
-
 # START RULES
-.PHONY: depend clean fclean re build run save
+.PHONY: all depend clean fclean re build run save
 
 all: $(NAME)
 
-$(NAME): libdep $(LIBA)
-	@echo "$(YELLOW)building $(NAME)$(RED)"
-	@$(CC) -o $(NAME) $(LPATH) $(HPATH)
-	@echo "$(RESET)$(GREEN)ready to rumble!$(RESET)"
-
-$(LIBA): $(OBJS)
+$(NAME): $(OBJS)
 	@echo "$(YELLOW)linking project lib...$(DARK)"
 	@$(AR) $@ $^
 	@ranlib $@
@@ -80,48 +59,21 @@ $(addprefix $(OBJDIR)/, %.o): $(addprefix $(SRCDIR)/, %.c)
 	@mkdir -p $(OBJDIR)
 	@$(CC) $(HPATH) -o $@ -c $^
 
-libdep:
-	@make -C libs/libft
-	@make -C libs/libprt
-	@make -C libs/libgnl
-
-libdepclean:
-	@make -C libs/libft fclean
-	@make -C libs/libprt fclean
-	@make -C libs/libgnl fclean
-
 clean:
-	@echo "$(YELLOW)removing $(OBJDIR)...$(RESET)"
+	@echo "$(YELLOW)removing objs...$(RESET)"
 	@$(RM) $(OBJDIR)
 
 fclean: clean
-	@echo "$(YELLOW)removing $(NAME) and $(LIBA)...$(RESET)"
+	@echo "$(YELLOW)removing binary and libs...$(RESET)"
 	@$(RM) $(NAME) $(LIBA)
 
 re: fclean
 	@make all
 
 # Personnal rules
-start:
-	@mkdir libs
-	@cp -rf ~/Dropbox/Projects/42libs/libft ./libs/
-	@cp -rf ~/Dropbox/Projects/42libs/libprt ./libs/
-	@mkdir ./srcs
-	@mkdir ./includes
-	@git init
-
 save:
 	@git add --all
 	@git commit -m 'saving $(NOW)'
-	@echo "$(YELLOW)all files added and commited$(RESET)"
-
-run:
-	@make re
-	@echo "$(BLUE)TEST BEGIN\n $(RESET)"
-	@./$(NAME) $(RUN_ARGS)
-	@echo "$(BLUE) \nTEST END $(RESET)"
-
-test: libdep
-	@$(CC) -o $(TEST) tests.c $(LPATH) $(HPATH)
+	@echo all files added and commited
 
 # DO NOT DELETE THIS LINE -- make depends on it

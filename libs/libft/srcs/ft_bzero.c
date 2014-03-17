@@ -12,6 +12,9 @@
 
 #include	"libft.h"
 
+/*
+** Sets content of s to 0
+*/
 void	ft_bzero(void *s, size_t n)
 {
 	if (s == NULL)

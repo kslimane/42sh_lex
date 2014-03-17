@@ -12,6 +12,9 @@
 
 #include	"libft.h"
 
+/*
+** Sets string to '\0'
+*/
 void	ft_strclr(char *s)
 {
 	size_t		i;

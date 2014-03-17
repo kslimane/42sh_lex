@@ -1,22 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_quit.c                                          :+:      :+:    :+:   */
+/*   ft_arraysrt.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: evilsbol <evilsbol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/02/07 17:17:43 by evilsbol          #+#    #+#             */
-/*   Updated: 2014/02/07 17:23:01 by evilsbol         ###   ########.fr       */
+/*   Created: 2014/02/26 16:31:11 by evilsbol          #+#    #+#             */
+/*   Updated: 2014/02/26 16:31:13 by evilsbol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libprt.h"
+#include "libft.h"
 
-void	ft_quit(int system, char *e_perso)
+int		ft_arraysrt(char **array)
 {
-	if (system)
-		ft_printf_fd(2, RED "%s: %s\n" RESET, strerror(system), e_perso);
-	else
-		ft_printf_fd(2, RED "%s\n" RESET, e_perso);
-	exit(EXIT_FAILURE);
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 0;
+	if (!array)
+		return (-1);
+	while (array[i][0])
+	{
+		j = i + 1;
+		while (array[j][0] != '\0')
+		{
+			if (ft_strcmp(array[i], array[j]) > 0)
+				ft_swap(&(array[i]), &(array[j]));
+			j++;
+		}
+		i++;
+	}
+	return (0);
 }

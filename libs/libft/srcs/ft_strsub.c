@@ -12,6 +12,9 @@
 
 #include	"libft.h"
 
+/*
+** extracts substring from s1 between start for len length.
+*/
 char	*ft_strsub(const char *s1, unsigned int start, size_t len)
 {
 	char	*str;

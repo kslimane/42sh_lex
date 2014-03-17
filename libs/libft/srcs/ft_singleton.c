@@ -14,11 +14,9 @@
 
 int		*ft_singleton(int init)
 {
-	static int	*sig = NULL;
+	static int	sig;
 
-	if (sig == NULL)
-		sig = (int *)malloc(sizeof(int));
 	if (init)
-		*sig = init;
-	return (sig);
+		sig = init;
+	return (&sig);
 }

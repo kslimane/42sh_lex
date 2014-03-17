@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fatal.c                                         :+:      :+:    :+:   */
+/*   ft_arraydup.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: evilsbol <evilsbol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/01/12 16:11:27 by evilsbol          #+#    #+#             */
-/*   Updated: 2014/01/12 16:13:27 by evilsbol         ###   ########.fr       */
+/*   Created: 2014/02/25 14:51:39 by evilsbol          #+#    #+#             */
+/*   Updated: 2014/02/25 14:56:05 by evilsbol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libprt.h"
+#include "libft.h"
 
-void	ft_fatal(char *binary)
+char	**ft_arraydup(char **array)
 {
-	if (!binary)
-		return ;
-	ft_printf_fd(2, "\033[1;31m[usage:]\033[0m %s <arg1> <arg2> <...>\n"\
-				, binary);
-	exit(EXIT_SUCCESS);
+	int		i;
+	int		len;
+	char	**cpy;
+
+	i = -1;
+	len = ft_arraylen(array);
+	cpy = (char **)malloc(sizeof(char *) * len + 1);
+	while (array && array[++i])
+		cpy[i] = ft_strdup(array[i]);
+	cpy[i] = NULL;
+	return (cpy);
 }

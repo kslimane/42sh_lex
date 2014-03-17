@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_quit.c                                          :+:      :+:    :+:   */
+/*   ft_prompt.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: evilsbol <evilsbol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/02/07 17:17:43 by evilsbol          #+#    #+#             */
-/*   Updated: 2014/02/07 17:23:01 by evilsbol         ###   ########.fr       */
+/*   Created: 2014/02/25 15:28:35 by evilsbol          #+#    #+#             */
+/*   Updated: 2014/02/25 15:29:35 by evilsbol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libprt.h"
 
-void	ft_quit(int system, char *e_perso)
+void	ft_prompt(char *prompt, char *color)
 {
-	if (system)
-		ft_printf_fd(2, RED "%s: %s\n" RESET, strerror(system), e_perso);
-	else
-		ft_printf_fd(2, RED "%s\n" RESET, e_perso);
-	exit(EXIT_FAILURE);
+	ft_printf("%s%s%s", color, prompt, RESET);
+	return ;
 }

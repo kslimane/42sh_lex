@@ -28,9 +28,9 @@ SRC2 =	ft_putchar_fd.c ft_putint_fd.c ft_putstr_fd.c ft_putnbr_fd.c \
 		ft_printchar_fd.c ft_printhexa_fd.c ft_printnbr_fd.c ft_printoctal_fd.c \
 		ft_printstr_fd.c ft_printunsigned_fd.c ft_printvoid_fd.c
 
-SRC3 = ft_printf.c ft_printf_fd.c ft_fatal.c
+SRC3 = ft_printf.c ft_printf_fd.c ft_putendl.c
 
-EXTRA = ft_quit.c
+EXTRA = ft_quit.c ft_prompt.c
 
 # STANDARD VARIABLES
 CC = gcc -Wall -Wextra -Werror -g #-pedantic

@@ -82,11 +82,12 @@ int		ft_printvoid_fd(int fd, va_list ap);
 */
 int		ft_printf(const char *s, ...);
 int		ft_printf_fd(int fd, const char *s, ...);
-void	ft_fatal(char *binary);
 
 /*
 ** EXTRA
 */
+void	ft_putendl(const char *str);
 void	ft_quit(int system, char *e_perso);
+void	ft_prompt(char *prompt, char *color);
 
 #endif /* ! LIBPRT_H */

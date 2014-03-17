@@ -69,6 +69,15 @@ char	**ft_strsplit(const char *s, char c);
 /*
 ** EXTRA
 */
+int		ft_arraylen(void **array);
+int		ft_arraycpy(char **dest, char **src);
+int		ft_arraysrt(char **array);
+void	ft_arraydel(char **array);
+void	ft_arrayprt(char **array);
+char	**ft_arraydup(char **array);
+
+void	ft_swap(char **str1, char **str2);
+void	ft_charcpy(char *dst, char *src, int index);
 int		ft_isnum(char *str);
 int		ft_pow(int x, int y);
 int		ft_count(char *str, char c);
